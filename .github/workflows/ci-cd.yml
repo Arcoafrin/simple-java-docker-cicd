@@ -1,0 +1,32 @@
+
+name: Java Docker CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        run: docker --version
+
+      - name: Build Java Docker image
+        run: docker build -f dockerfile -t java-app:ci .
+
+      - name: Test Java application
+        run: |
+          output=$(docker run --rm java-app:ci)
+          echo "$output"
+          test "$output" = "Hello from Java Docker CI/CD!"
+
