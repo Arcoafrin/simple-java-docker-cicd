@@ -1,5 +1,10 @@
+
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello from Java Docker CI/CD!");
+        System.out.println("Hello Afreen!");
+        System.out.println("I am a frontend developer.");
+        System.out.println("Now I want to become a DevOps engineer.");
     }
 }
+
